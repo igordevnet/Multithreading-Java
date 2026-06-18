@@ -1,6 +1,6 @@
 public class Main
 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Runnable r1 = () -> {
             for (int i=0; i<10;++i) {
@@ -33,6 +33,13 @@ public class Main
         t2.start();
         t3.start();
         t4.start();
+
+        t1.join();
+        t2.join();
+        t3.join();
+        t4.join();
+
+        System.out.println("Finished execution.");
 
     }
 }
