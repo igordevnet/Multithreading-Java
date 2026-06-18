@@ -4,12 +4,22 @@ public class Main
 
         Runnable r1 = () -> {
             for (int i=0; i<10;++i) {
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.out.println("Thread 3: " + i);
             }
         };
 
         Runnable r2 = () -> {
             for (int i=0; i<10;++i) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
                 System.out.println("Thread 4: " + i);
             }
         };
@@ -26,3 +36,4 @@ public class Main
 
     }
 }
+
