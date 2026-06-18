@@ -34,6 +34,10 @@ public class Main
         t3.start();
         t4.start();
 
+        for (Thread t : Thread.getAllStackTraces().keySet()) {
+            System.out.println("The thread's name: " + t.getName() + " State: " + t.getState());
+        }
+
         t1.join();
         t2.join();
         t3.join();
