@@ -8,7 +8,7 @@ public class SharedBuffer {
     private int capacity = 5;
 
     public synchronized void producer() throws InterruptedException {
-        if(buffer.size() == capacity) {
+        while(buffer.size() == capacity) {
             System.out.println("Buffer full, producer waiting...");
             wait();
         }
@@ -24,7 +24,7 @@ public class SharedBuffer {
     }
 
     public synchronized void consumer() throws InterruptedException {
-        if(buffer.size() < capacity) {
+        while(buffer.size() < capacity) {
             System.out.println("Buffer not full yet, consumer waiting...");
             wait();
         }
